@@ -12,12 +12,14 @@ impl<const N: usize> RingBuffer<N> {
       tail: 0,
     }
   }
-}
 
-impl<const N: usize> RingBuffer<N> {
-    fn isEmpty(&self) -> bool {
+  fn isEmpty(&self) -> bool {
         return self.head == self.tail;
-    }
+  }
+
+  fn isFull(&self) -> bool {
+      return (self.head+1)%N == self.tail
+  }
 }
 
 fn main()
